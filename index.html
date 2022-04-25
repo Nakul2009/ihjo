@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://fonts.googleapis.com/css2?family=Merienda&family=Poppins:wght@200&display=swap"
+        rel="stylesheet">
+    <title>ChatDay Countdown!</title>
+    <link href="style.css" rel="stylesheet" type="text/css">
+</head>
+
+<body>
+    <div class="container">
+        <img src="images/logo.png" class="logo">
+        <div class="content">
+            <p id="spie">Spie - The Result of Experiment</p>
+            <h1>We're <span>Releasing it</span> Soon!</h1>
+
+            <div class="launch-time">
+                <div>
+                    <p id="days">00</p>
+                    <span>Days</span>
+                </div>
+                <div>
+                    <p id="hours">00</p>
+                    <span>Hours</span>
+                </div>
+                <div>
+                    <p id="minutes">00</p>
+                    <span>Minutes</span>
+                </div>
+                <div>
+                    <p id="seconds">00</p>
+                    <span>Seconds</span>
+                </div>
+            </div>
+
+            <button type="button">Click to Play <img src="images/triangle.png"></button>
+        </div>
+        <img src="images/rocket.png" class="rocket">
+    </div>
+
+    <script>
+        var countDownDate = new Date("May 25, 2022 16:30:59").getTime();
+        var x = setInterval(function () {
+            var now = new Date().getTime();
+            var distance = countDownDate - now;
+
+            var days = Math.floor(distance / (1000 * 60 * 60 * 24));
+            var hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+            var minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
+            var seconds = Math.floor((distance % (1000 * 60)) / 1000);
+
+            document.getElementById("days").innerHTML = days;
+            document.getElementById("hours").innerHTML = hours;
+            document.getElementById("minutes").innerHTML = minutes;
+            document.getElementById("seconds").innerHTML = seconds;
+
+            if (distance < 0) {
+                clearInterval(x);
+                document.getElementById("days").innerHTML = "Released!";
+                document.getElementById("hours").innerHTML = "&nbsp;";
+                document.getElementById("minutes").innerHTML = "&nbsp;";
+                document.getElementById("seconds").innerHTML = "&nbsp;";
+            }
+        }, 1000);
+    </script>
+
+</body>
+
+</html>
